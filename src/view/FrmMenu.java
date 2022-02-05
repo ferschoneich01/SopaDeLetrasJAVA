@@ -5,10 +5,8 @@
  */
 package view;
 
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
+import model.Data;
 import model.Music;
 
 /**
@@ -16,9 +14,8 @@ import model.Music;
  * @author Fernando
  */
 public class FrmMenu extends javax.swing.JFrame {
-
     int x, y;
-
+    String nombreJugador;
     /**
      * Creates new form FrmMenu
      */
@@ -27,7 +24,7 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         Music m = new Music();
         m.PlaySound("Music");
-
+        
     }
 
     /**
@@ -44,6 +41,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         cbx_dificult = new javax.swing.JComboBox<>();
+        btnRecord = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -100,27 +98,41 @@ public class FrmMenu extends javax.swing.JFrame {
         cbx_dificult.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cbx_dificult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONAR DIFICULTAD", "Facil", "Medio", "Dificil" }));
 
+        btnRecord.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRecord.setForeground(new java.awt.Color(255, 255, 255));
+        btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icon-trofeo.png"))); // NOI18N
+        btnRecord.setText("MEJOR PUNTAJE");
+        btnRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRecordMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(26, 26, 26)
                 .addComponent(cbx_dificult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(32, 32, 32)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addGap(4, 4, 4))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbx_dificult, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbx_dificult, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -133,13 +145,20 @@ public class FrmMenu extends javax.swing.JFrame {
         Music m = new Music();
         m.PlaySound("Click");
         if (cbx_dificult.getSelectedIndex() == 1) {
-            new FrmEasy().setVisible(true);
+            FrmEasy fe = new FrmEasy();
+            fe.setVisible(true);
+            fe.guardarNombreJug(nombreJugador);
             this.dispose();
         } else if (cbx_dificult.getSelectedIndex() == 2) {
             new FrmMedium().setVisible(true);
+            FrmMedium fm = new FrmMedium();
+            fm.setVisible(true);
+            fm.guardarNombreJug(nombreJugador);
             this.dispose();
         } else if (cbx_dificult.getSelectedIndex() == 3) {
-            new FrmHard().setVisible(true);
+            FrmHard fh = new FrmHard();
+            fh.setVisible(true);
+            fh.guardarNombreJug(nombreJugador);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this,"Seleccione una dificultad");
@@ -172,6 +191,15 @@ public class FrmMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel1MouseDragged
 
+    private void btnRecordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecordMouseClicked
+        Data data = new Data();
+        data.readFile("data.txt");
+    }//GEN-LAST:event_btnRecordMouseClicked
+    
+    public void guardarNombreJug(String name){
+        nombreJugador = name;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -208,6 +236,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnRecord;
     private javax.swing.JComboBox<String> cbx_dificult;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

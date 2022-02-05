@@ -27,6 +27,8 @@ public class FrmHard extends javax.swing.JFrame
     int inicioy[];
     boolean gano; 
     boolean direccion[];
+    String NombreJug = "";
+    
     public FrmHard() 
     {
         initComponents();
@@ -370,7 +372,9 @@ public class FrmHard extends javax.swing.JFrame
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Music m = new Music();
         m.PlaySound("Click");
-        new FrmMenu().setVisible(true);
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        menu.guardarNombreJug(NombreJug);
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
@@ -603,6 +607,10 @@ public class FrmHard extends javax.swing.JFrame
                 }
             }
         }
+    }
+    
+    public void guardarNombreJug(String name){
+        NombreJug = name;
     }
     public static void main(String args[]) 
     {

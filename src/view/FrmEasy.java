@@ -11,7 +11,7 @@ import model.Music;
  * creado el 25-sep-2015 Daniel Diaz
  */
 public class FrmEasy extends javax.swing.JFrame {
-
+    
     int x,y;
     MsgLike fin;
     JLabel letra[][];
@@ -21,7 +21,8 @@ public class FrmEasy extends javax.swing.JFrame {
     int inicioy[];
     boolean gano;
     boolean direccion[];
-
+    String NombreJug = "";
+    
     public FrmEasy() {
         initComponents();
         palabra = new JLabel[]{p1, p2, p3, p4, p5, p6, p7, p8, p9, p10};
@@ -357,7 +358,9 @@ public class FrmEasy extends javax.swing.JFrame {
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         Music m = new Music();
         m.PlaySound("Click");
-        new FrmMenu().setVisible(true);
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible(true);
+        menu.guardarNombreJug(NombreJug);
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
@@ -588,7 +591,10 @@ public class FrmEasy extends javax.swing.JFrame {
             }
         }
     }
-
+    
+    public void guardarNombreJug(String name){
+        NombreJug = name;
+    }
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
