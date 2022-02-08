@@ -21,6 +21,7 @@ public class Music {
     
     Clip clip;
     String url = "/resources/sounds/";
+    
     public void PlaySound(String Archivo){
         try{
             clip = AudioSystem.getClip();
@@ -29,5 +30,11 @@ public class Music {
         }catch(Exception ex){
             System.out.println(""+ex);
         }
+    }
+    
+    public void StopSound(){
+        clip.close();
+        clip.stop();
+        System.out.println("sonido detenido");
     }
 }

@@ -8,6 +8,7 @@ package model;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import jmapps.ui.MessageDialog;
 import view.DlgLose;
 import view.FrmMenu;
 import view.MsgLike;

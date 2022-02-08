@@ -15,7 +15,11 @@ public class MsgLike extends javax.swing.JInternalFrame {
     public MsgLike() {
         initComponents();
     }
-
+    
+    public void asignarDatos(String name, String points){
+        lblname1.setText(name);
+        lblpoints.setText(points+" puntos");
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -28,6 +32,8 @@ public class MsgLike extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblpoints = new javax.swing.JLabel();
+        lblname1 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -35,32 +41,48 @@ public class MsgLike extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon-congrats.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 204, 102));
         jLabel2.setText("¡FELICIDADES HAZ GANADO!");
+
+        lblpoints.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblpoints.setForeground(new java.awt.Color(255, 255, 255));
+        lblpoints.setText("puntos");
+
+        lblname1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblname1.setForeground(new java.awt.Color(255, 255, 255));
+        lblname1.setText("name");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(79, 79, 79))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel2)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(lblname1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblpoints, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblpoints)
+                    .addComponent(lblname1))
+                .addGap(23, 23, 23))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -73,5 +95,7 @@ public class MsgLike extends javax.swing.JInternalFrame {
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel2;
     javax.swing.JPanel jPanel1;
+    javax.swing.JLabel lblname1;
+    javax.swing.JLabel lblpoints;
     // End of variables declaration//GEN-END:variables
 }

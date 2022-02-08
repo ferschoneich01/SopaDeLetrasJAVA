@@ -16,13 +16,14 @@ import model.Music;
 public class FrmMenu extends javax.swing.JFrame {
     int x, y;
     String nombreJugador;
+    Music m = new Music();
     /**
      * Creates new form FrmMenu
      */
     public FrmMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Music m = new Music();
+        
         m.PlaySound("Music");
         
     }
@@ -76,7 +77,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("JUGAR");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -87,7 +88,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("SALIR");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -102,7 +103,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnRecord.setForeground(new java.awt.Color(255, 255, 255));
         btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icon-trofeo.png"))); // NOI18N
         btnRecord.setText("MEJOR PUNTAJE");
-        btnRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRecord.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRecordMouseClicked(evt);
@@ -121,7 +122,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,21 +143,23 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Music m = new Music();
-        m.PlaySound("Click");
+        Music m2 = new Music();
+        m2.PlaySound("Click");
         if (cbx_dificult.getSelectedIndex() == 1) {
             FrmEasy fe = new FrmEasy();
+            m.StopSound();
             fe.setVisible(true);
             fe.guardarNombreJug(nombreJugador);
             this.dispose();
         } else if (cbx_dificult.getSelectedIndex() == 2) {
-            new FrmMedium().setVisible(true);
             FrmMedium fm = new FrmMedium();
+            m.StopSound();
             fm.setVisible(true);
             fm.guardarNombreJug(nombreJugador);
             this.dispose();
         } else if (cbx_dificult.getSelectedIndex() == 3) {
             FrmHard fh = new FrmHard();
+            m.StopSound();
             fh.setVisible(true);
             fh.guardarNombreJug(nombreJugador);
             this.dispose();

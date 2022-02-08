@@ -19,7 +19,13 @@ public class sopa_de_letras {
         //Iniciamos ventana menu
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
-        menu.guardarNombreJug(JOptionPane.showInputDialog(null,"Ingrese nombre de jugador:"));        //menu.guardarNombreJugador(JOptionPane.showInputDialog(null, ""));
+        String name = "";
+        
+        while(name.equals("") || JOptionPane.CANCEL_OPTION == 1){
+            name = JOptionPane.showInputDialog(null, "Nombre de jugador:");
+            menu.guardarNombreJug(name);
+        }
+        
 
     }
 

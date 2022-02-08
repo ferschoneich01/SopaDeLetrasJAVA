@@ -28,6 +28,7 @@ public class FrmHard extends javax.swing.JFrame
     boolean gano; 
     boolean direccion[];
     String NombreJug = "";
+    Music m = new Music();
     
     public FrmHard() 
     {
@@ -42,6 +43,7 @@ public class FrmHard extends javax.swing.JFrame
         }
         ti = new Time(lblTime,this);
         ti.start();
+        m.PlaySound("Mdificil");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -354,8 +356,8 @@ public class FrmHard extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        Music m = new Music();
-        m.PlaySound("Click");
+        Music m2 = new Music();
+        m2.PlaySound("Click");
         //esta reinicia el juego
         for (int i = 0; i < letra.length; i++) {
             palabra[i].setText(palabras[i]);//asigna a los label de la derecha las palabras
@@ -370,17 +372,18 @@ public class FrmHard extends javax.swing.JFrame
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        Music m = new Music();
-        m.PlaySound("Click");
+        Music m2 = new Music();
+        m2.PlaySound("Click");
         FrmMenu menu = new FrmMenu();
         menu.setVisible(true);
+        m.StopSound();
         menu.guardarNombreJug(NombreJug);
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        Music m = new Music();
-        m.PlaySound("Click");
+        Music m2 = new Music();
+        m2.PlaySound("Click");
         System.exit(0);
     }//GEN-LAST:event_jMenu3MouseClicked
 
@@ -487,6 +490,8 @@ public class FrmHard extends javax.swing.JFrame
             { //esto comprueba si la ventana no esta en memoria, entonces la instancia
                 fin = new MsgLike();   
                 gano=true;
+                //fin.asignarDatos(NombreJug, );
+                
             } 
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar
             //esta reinicia el juego
