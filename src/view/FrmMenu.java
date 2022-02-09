@@ -122,7 +122,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(btnRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,6 +155,7 @@ public class FrmMenu extends javax.swing.JFrame {
             FrmMedium fm = new FrmMedium();
             m.StopSound();
             fm.setVisible(true);
+            System.out.println("Nombre escrito: "+nombreJugador);
             fm.guardarNombreJug(nombreJugador);
             this.dispose();
         } else if (cbx_dificult.getSelectedIndex() == 3) {

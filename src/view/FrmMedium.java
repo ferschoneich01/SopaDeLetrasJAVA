@@ -1,6 +1,5 @@
 package view;
 
-import view.MsgLike;
 import java.awt.Color;
 import java.util.Random;
 import javax.swing.JInternalFrame;
@@ -17,7 +16,7 @@ import view.MsgLike;
 public class FrmMedium extends javax.swing.JFrame {
 
     int x, y;
-    Player p = new Player();
+    public Player p = new Player();
     MsgLike fin;
     JLabel letra[][];
     JLabel palabra[];
@@ -29,6 +28,7 @@ public class FrmMedium extends javax.swing.JFrame {
     Time2 ti;
     String NombreJug = "";
     Music m = new Music();
+
     public FrmMedium() {
         initComponents();
         palabra = new JLabel[]{p1, p2, p3, p4, p5, p6, p7, p8, p9, p10};
@@ -40,7 +40,7 @@ public class FrmMedium extends javax.swing.JFrame {
             palabras[i] = palabra[i].getText();//pasa la palabra del arreglo label al al arreglo de string
         }
 
-        ti = new Time2(lblTime,this);
+        ti = new Time2(lblTime, this);
         ti.start();
         m.PlaySound("Mmedio");
     }
@@ -337,7 +337,7 @@ public class FrmMedium extends javax.swing.JFrame {
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon-salir.png"))); // NOI18N
         jMenu3.setText("Salir");
-        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu3MouseClicked(evt);
@@ -462,9 +462,14 @@ public class FrmMedium extends javax.swing.JFrame {
                 if (tacharLetra(iniciox[i], inicioy[i], palabra[i].getText().length(), direccion[i]))//pregunta si hay una palabra encontrada
                 {
                     palabra[i].setText("<html><body><s>" + palabra[i].getText() + "</s></body></html>");//tacha la palabra
+                    p.points += 10;
+                    ti.setPlayer(p);
                     break;
+
                 }
+
             }
+
         }
         boolean aux = true;//ayuda para saber si ya todas las palabras estan tachadas
         for (int i = 0; i < letra.length; i++) {
@@ -480,7 +485,10 @@ public class FrmMedium extends javax.swing.JFrame {
                 //guardando el puntaje
                 Data d = new Data();
                 p.setName(NombreJug);
+                p.setLevel(2);
+                p.setTime(180 - Integer.parseInt(lblTime.getText()));
                 d.savePoints(p);
+                m.StopSound();
             }
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar
             //esta reinicia el juego
@@ -492,11 +500,10 @@ public class FrmMedium extends javax.swing.JFrame {
                     Sopa_de_letra.remove(letra[i][j]);//quita el panel  Sopa_de_letra
                 }
             }
-            cargar();//carga el juego}
+            cargar();//carga el juego
 
         }
-        
-        p.points += 10;
+
     }
 
     public void CentrarVentanaInterna(JInternalFrame internalFrame) { //pasamos como parametro un objeto de tipo JinternalFrame
@@ -602,10 +609,11 @@ public class FrmMedium extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void guardarNombreJug(String name){
-        NombreJug = name;
+
+    public void guardarNombreJug(String name) {
+        p.setName(name);  
     }
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

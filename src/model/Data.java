@@ -47,7 +47,7 @@ public class Data {
         try {
             BufferedReader br = new BufferedReader(new FileReader(archivo));
             line = br.readLine();
-            //JOptionPane.showMessageDialog(null, line, "Mensaje en la barra de titulo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Jugador: "+line.replace("-", " puntos: "), "MAYOR PUNTAJE", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
             System.out.println("" + ex);
         } catch (IOException ex) {
@@ -55,40 +55,47 @@ public class Data {
         }
         return line;
     }
-    
-    public void savePoints(Player p){
+
+    public void savePoints(Player p) {
         //Jugador guardado en memoria
         Player p2 = new Player();
         String flag = "";
+        char aux;
         //datos en memoria
-        String[] data = {readFile("data.txt")};
+        String data = readFile("data.txt");
         //ubicacion del guion
         int separacion = 0;
-        
-        //obtener posicion del guion
-        for(int i = 0; i < data.length; i++){
-            if(!"-".equals(data[i])){
-               separacion = i;
-               
+        System.out.println("data:"+data);
+        if (data != null) {
+            //obtener posicion del guion
+
+            for (int i = 0; i < data.length(); i++) {
+                aux = data.charAt(i);
+                if (aux == '-') {
+                    separacion = i;
+                }
             }
-        }
-        
-        //extraer datos
-        for(int i = 0; i < data.length; i++){
-            if(i < separacion){
-                p2.setName(p2.getName() + data[i]);
-            }else if(i > separacion){
-                flag = flag + data[i];
+
+            //extraer datos
+            for (int j = 0; j < data.length(); j++) {
+                if (j < separacion) {
+                    p2.name += data.charAt(j);
+                } else if (j > separacion) {
+                    flag += data.charAt(j);
+                }
             }
-        }
-        
-        p2.setPoints(Integer.parseInt(flag));
-        
-        //si el puntaje nuevo es mayor al guardado se reescribe
-        if(p.getPoints() > p2.getPoints()){
-            writeOnFile("data.txt", p.getName()+"-"+p.getPoints());
+
+            p2.setPoints(Integer.parseInt(flag));
+            //si el puntaje nuevo es mayor al guardado se reescribe
+            if ((p.getPoints() > p2.getPoints())) {
+                writeOnFile("data.txt", p.getName() + "-" + p.getPoints());
+                JOptionPane.showMessageDialog(null, "Nuevo Record");
+            }
+        } else {
+  
+            writeOnFile("data.txt", p.getName() + "-" + p.getPoints() + "-" + p.getLevel() + "-" + p.getTime());
             JOptionPane.showMessageDialog(null, "Nuevo Record");
         }
-        
     }
+
 }

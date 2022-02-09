@@ -10,25 +10,30 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import jmapps.ui.MessageDialog;
 import view.DlgLose;
+import view.FrmHard;
+import view.FrmMedium;
 import view.FrmMenu;
 import view.MsgLike;
 
 /**
  *
- * @author Fernando
+ * @author 
  */
 public class Time extends Thread {
-    JFrame frm;
+    Data d = new Data();
+    FrmHard frm;
     JLabel t;
-    int i = 90;
-    boolean flag = true; 
-    public Time(JLabel t, JFrame frm) {
+    Player p;
+    int i = 10;
+    boolean flag = true;
+    
+    public Time(JLabel t, FrmHard frm) {
         this.t = t;
         this.frm = frm;
     }
 
     public void run() {
-        t.setForeground(new Color(0,255,0)); 
+       t.setForeground(new Color(0, 255, 0));
         while (flag) {
             try {
 
@@ -39,23 +44,28 @@ public class Time extends Thread {
             } catch (InterruptedException e) {
 
             }
-            if(i <= 10){
+            if (i <= 10) {
                 t.setForeground(new Color(255, 0, 0));
             }
-            if(i <= 0){
+            if (i <= 0) {
                 flag = false;
-                DlgLose dlose = new DlgLose(null,true);
+                DlgLose dlose = new DlgLose(null, true);
                 dlose.setVisible(true);
                 finish();
             }
         }
     }
     
-    public void finish(){
+    public void finish() {
         FrmMenu fm = new FrmMenu();
         fm.setLocationRelativeTo(null);
         fm.setVisible(true);
+        d.savePoints(frm.p);
         frm.dispose();
+    }
+
+    public void setPlayer(Player p) {
+        this.p = p;
     }
     
     public void restart(){

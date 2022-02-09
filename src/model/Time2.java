@@ -9,24 +9,30 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import view.DlgLose;
+import view.FrmMedium;
 import view.FrmMenu;
 
 /**
  *
- * @author Fernando
+ * @author
  */
 public class Time2 extends Thread {
-    JFrame frm;
+
+    Data d = new Data();
+    FrmMedium frm;
     JLabel t;
+    Player p;
     int i = 180;
-    boolean flag = true; 
-    public Time2(JLabel t,JFrame frm) {
+    boolean flag = true;
+
+    public Time2(JLabel t, FrmMedium frm) {
         this.t = t;
         this.frm = frm;
+
     }
 
     public void run() {
-        t.setForeground(new Color(0,255,0)); 
+        t.setForeground(new Color(0, 255, 0));
         while (flag) {
             try {
 
@@ -37,26 +43,31 @@ public class Time2 extends Thread {
             } catch (InterruptedException e) {
 
             }
-            if(i <= 10){
+            if (i <= 10) {
                 t.setForeground(new Color(255, 0, 0));
             }
-            if(i <= 0){
+            if (i <= 0) {
                 flag = false;
-                DlgLose dlose = new DlgLose(null,true);
+                DlgLose dlose = new DlgLose(null, true);
                 dlose.setVisible(true);
                 finish();
             }
         }
     }
-    
-    public void finish(){
+
+    public void finish() {
         FrmMenu fm = new FrmMenu();
         fm.setLocationRelativeTo(null);
         fm.setVisible(true);
+        d.savePoints(frm.p);
         frm.dispose();
     }
-   
-    public void restart(){
+
+    public void setPlayer(Player p) {
+        this.p = p;
+    }
+
+    public void restart() {
         i = 180;
     }
 }

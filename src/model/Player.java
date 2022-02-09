@@ -12,14 +12,18 @@ package model;
 public class Player {
     public String name;
     public int points;
-
-    public Player(String name, int points) {
-        this.name = name;
-        this.points = points;
-    }
+    public int level;
+    public int time;
 
     public Player() {
-        
+    }
+    
+    
+    public Player(String name, int points, int level, int time) {
+        this.name = name;
+        this.points = points;
+        this.level = level;
+        this.time = time;
     }
 
     public String getName() {
@@ -37,6 +41,25 @@ public class Player {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+    
+    
+    
     
     
 }

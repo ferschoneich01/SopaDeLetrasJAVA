@@ -7,7 +7,9 @@ import java.awt.Color;
 import java.util.Random;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import model.Data;
 import model.Music;
+import model.Player;
 import model.Time;
 import view.MsgLike;
 
@@ -18,6 +20,7 @@ import view.MsgLike;
 public class FrmHard extends javax.swing.JFrame 
 {
     int x,y;
+    public Player p = new Player();
     Time ti;
     MsgLike fin;
     JLabel letra[][];
@@ -369,6 +372,7 @@ public class FrmHard extends javax.swing.JFrame
         }
         cargar();//carga el juego
         ti.restart();
+        p.points = 0;
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
@@ -472,6 +476,8 @@ public class FrmHard extends javax.swing.JFrame
                 if (tacharLetra(iniciox[i],inicioy[i],palabra[i].getText().length(),direccion[i]))//pregunta si hay una palabra encontrada
                 {
                     palabra[i].setText("<html><body><s>"+palabra[i].getText()+"</s></body></html>");//tacha la palabra
+                    p.points += 10;
+                    ti.setPlayer(p);
                     break;
                 }
             }
@@ -490,8 +496,12 @@ public class FrmHard extends javax.swing.JFrame
             { //esto comprueba si la ventana no esta en memoria, entonces la instancia
                 fin = new MsgLike();   
                 gano=true;
-                //fin.asignarDatos(NombreJug, );
-                
+                Data d = new Data();
+                p.setLevel(2);
+                p.setTime(180 - Integer.parseInt(lblTime.getText())); 
+                d.savePoints(p);
+                m.StopSound();
+                     
             } 
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar
             //esta reinicia el juego
@@ -614,8 +624,8 @@ public class FrmHard extends javax.swing.JFrame
         }
     }
     
-    public void guardarNombreJug(String name){
-        NombreJug = name;
+    public void guardarNombreJug(String name) {
+        p.setName(name);  
     }
     public static void main(String args[]) 
     {
