@@ -50,7 +50,9 @@ public class Time extends Thread {
             if (i <= 0) {
                 flag = false;
                 DlgLose dlose = new DlgLose(null, true);
+                dlose.asignarDatos(frm.p.getName(), frm.p.getPoints() + "");
                 dlose.setVisible(true);
+                frm.m.StopSound();
                 finish();
             }
         }

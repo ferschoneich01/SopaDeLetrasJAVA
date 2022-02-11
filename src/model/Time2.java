@@ -22,7 +22,7 @@ public class Time2 extends Thread {
     FrmMedium frm;
     JLabel t;
     Player p;
-    int i = 180;
+    int i = 10;
     boolean flag = true;
 
     public Time2(JLabel t, FrmMedium frm) {
@@ -49,7 +49,11 @@ public class Time2 extends Thread {
             if (i <= 0) {
                 flag = false;
                 DlgLose dlose = new DlgLose(null, true);
+
+                dlose.asignarDatos(frm.p.getName(), frm.p.getPoints() + "");
+
                 dlose.setVisible(true);
+                frm.m.StopSound();
                 finish();
             }
         }

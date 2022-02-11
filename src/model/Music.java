@@ -35,6 +35,6 @@ public class Music {
     public void StopSound(){
         clip.close();
         clip.stop();
-        System.out.println("sonido detenido");
+
     }
 }

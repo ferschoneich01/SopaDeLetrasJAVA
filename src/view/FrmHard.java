@@ -31,7 +31,7 @@ public class FrmHard extends javax.swing.JFrame
     boolean gano; 
     boolean direccion[];
     String NombreJug = "";
-    Music m = new Music();
+    public Music m = new Music();
     
     public FrmHard() 
     {
@@ -47,6 +47,7 @@ public class FrmHard extends javax.swing.JFrame
         ti = new Time(lblTime,this);
         ti.start();
         m.PlaySound("Mdificil");
+       p.setPoints(0); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -501,6 +502,7 @@ public class FrmHard extends javax.swing.JFrame
                 p.setTime(180 - Integer.parseInt(lblTime.getText())); 
                 d.savePoints(p);
                 m.StopSound();
+                fin.asignarDatos(NombreJug, p.getPoints()+"");
                      
             } 
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar

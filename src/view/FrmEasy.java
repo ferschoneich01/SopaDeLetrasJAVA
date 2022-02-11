@@ -475,6 +475,7 @@ public class FrmEasy extends javax.swing.JFrame {
         if (aux) {
             if (!(fin instanceof MsgLike)) { //esto comprueba si la ventana no esta en memoria, entonces la instancia
                 fin = new MsgLike();
+                fin.asignarDatos(NombreJug, "100");
                 gano = true;
             }
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar

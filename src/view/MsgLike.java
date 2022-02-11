@@ -34,6 +34,8 @@ public class MsgLike extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         lblpoints = new javax.swing.JLabel();
         lblname1 = new javax.swing.JLabel();
+        lblname2 = new javax.swing.JLabel();
+        lblname3 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -53,6 +55,14 @@ public class MsgLike extends javax.swing.JInternalFrame {
         lblname1.setForeground(new java.awt.Color(255, 255, 255));
         lblname1.setText("name");
 
+        lblname2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblname2.setForeground(new java.awt.Color(255, 255, 255));
+        lblname2.setText("Jugador:");
+
+        lblname3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblname3.setForeground(new java.awt.Color(255, 255, 255));
+        lblname3.setText("Puntos:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -65,11 +75,19 @@ public class MsgLike extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblname1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblname2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblname1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblpoints, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblpoints, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblname3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 16, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,6 +96,10 @@ public class MsgLike extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblname2)
+                    .addComponent(lblname3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblpoints)
@@ -96,6 +118,8 @@ public class MsgLike extends javax.swing.JInternalFrame {
     javax.swing.JLabel jLabel2;
     javax.swing.JPanel jPanel1;
     javax.swing.JLabel lblname1;
+    javax.swing.JLabel lblname2;
+    javax.swing.JLabel lblname3;
     javax.swing.JLabel lblpoints;
     // End of variables declaration//GEN-END:variables
 }

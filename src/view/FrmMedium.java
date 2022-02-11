@@ -27,8 +27,8 @@ public class FrmMedium extends javax.swing.JFrame {
     boolean direccion[];
     Time2 ti;
     String NombreJug = "";
-    Music m = new Music();
-
+    public Music m = new Music();
+    
     public FrmMedium() {
         initComponents();
         palabra = new JLabel[]{p1, p2, p3, p4, p5, p6, p7, p8, p9, p10};
@@ -43,6 +43,7 @@ public class FrmMedium extends javax.swing.JFrame {
         ti = new Time2(lblTime, this);
         ti.start();
         m.PlaySound("Mmedio");
+        p.setPoints(0); 
     }
 
     @SuppressWarnings("unchecked")
@@ -116,7 +117,7 @@ public class FrmMedium extends javax.swing.JFrame {
 
         p1.setBackground(new java.awt.Color(255, 153, 51));
         p1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        p1.setText("AMIGDALA");
+        p1.setText("ensalada");
         p1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         p1.setOpaque(true);
 
@@ -489,6 +490,7 @@ public class FrmMedium extends javax.swing.JFrame {
                 p.setTime(180 - Integer.parseInt(lblTime.getText()));
                 d.savePoints(p);
                 m.StopSound();
+                fin.asignarDatos(NombreJug, p.getPoints()+"");
             }
             CentrarVentanaInterna(fin); //usamos el metodo generico para centrar
             //esta reinicia el juego

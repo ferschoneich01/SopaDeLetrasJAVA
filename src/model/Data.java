@@ -65,7 +65,6 @@ public class Data {
         String data = readFile("data.txt");
         //ubicacion del guion
         int separacion = 0;
-        System.out.println("data:"+data);
         if (data != null) {
             //obtener posicion del guion
 
